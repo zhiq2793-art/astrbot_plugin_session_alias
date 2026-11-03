@@ -1,0 +1,9 @@
+name: astrbot_plugin_session_alias
+display_name: 会话别名（换号不换记忆）
+author: zhiq2793-art
+description: >
+  把指定的若干个账号（乃至不同平台），映射到同一份会话记忆上。
+  换了 QQ 号、换了平台来找她，也还是同一间屋子、同一份记忆。
+  它只改"去哪个抽屉里找记忆"，不改变"回复发给谁"。
+version: 2.2.0
+repo: ""

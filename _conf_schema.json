@@ -1,0 +1,62 @@
+{
+    "enable": {
+        "description": "总开关",
+        "type": "bool",
+        "default": true,
+        "hint": "关掉它，插件就什么都不做——但插件本身还挂着。想临时停一下用这个，不用去停用整个插件。"
+    },
+    "master_umo": {
+        "description": "目标来源（主号的完整 UMO）",
+        "type": "string",
+        "default": "",
+        "hint": "格式是 平台名:FriendMessage:会话号。别名号都会并到这儿。例如：123***789:FriendMessage:987***321（星号只是脱敏写法，实际填完整的会话标识）。忘了自己当前是什么来源？在聊天里发 /别名 就能看到。"
+    },
+    "alias_ids": {
+        "description": "别名号（要并进来的那些）",
+        "type": "string",
+        "default": "",
+        "hint": "一行一个，或者用逗号隔开都行。例如：123***789,987***321（也可以填完整 UMO，那样就是并整个群、整个平台）"
+    },
+    "alias_notes": {
+        "description": "别名备注（只给你自己看）",
+        "type": "string",
+        "default": "",
+        "hint": "不参与逻辑，纯粹留档。例如：123***789 = 备用号1"
+    },
+    "origin_hint": {
+        "description": "告诉模型「这条消息从哪个门进来的」",
+        "type": "bool",
+        "default": true,
+        "hint": "开启后，每次请求都会往系统提示里追加一行来源说明。这样模型就知道你现在是在官方号（能渲染 Markdown）还是 NapCat（纯文本），说话方式会自动适配——不会再把星号露给你看。"
+    },
+    "origin_notes": {
+        "description": "来源说明表（每行一条，格式：标识 = 说明）",
+        "type": "string",
+        "default": "",
+        "hint": "等号左边写「发送者 UID」或「完整 UMO」，右边写人话说明。左侧哪一条对上了，就把右边那句告诉模型。\n例如：\n123***789 = 备用号1（支持 Markdown，可以用代码块、粗体）\n987***321 = 主号（纯文本，不要用星号和代码块）"
+    },
+    "dry_run": {
+        "description": "演习模式",
+        "type": "bool",
+        "default": false,
+        "hint": "勾上以后只往日志里写字，不真的改。想先看看它会不会乱来，就开这个试一轮。"
+    },
+    "only_private": {
+        "description": "只在私聊生效",
+        "type": "bool",
+        "default": true,
+        "hint": "勾上以后，群聊里一律不碰。建议保持勾选。"
+    },
+    "platform_allow": {
+        "description": "平台白名单（留空 = 全部平台）",
+        "type": "string",
+        "default": "",
+        "hint": "只对这几个平台做映射。多个用逗号隔开。例如填 default_123***789 就只管那一个平台。留空则所有平台都管。"
+    },
+    "verbose": {
+        "description": "日志报告",
+        "type": "bool",
+        "default": true,
+        "hint": "打开后，别名号第一次说话时会往日志写一行，方便你确认它工作了。"
+    }
+}
