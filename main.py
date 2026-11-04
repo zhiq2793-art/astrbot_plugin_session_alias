@@ -347,3 +347,5 @@ class SessionAliasPlugin(Star):
             lines.append("→ 你这个号不在别名表里，走独立记忆。")
 
         yield event.plain_result("\n".join(lines))
+
+#I Love You 沐
