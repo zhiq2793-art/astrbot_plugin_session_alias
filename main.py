@@ -263,6 +263,18 @@ class SessionAliasPlugin(Star):
     @filter.event_message_type(filter.EventMessageType.ALL)
     async def on_any_message(self, event: AstrMessageEvent):
         """所有消息一进来，就先改一次。"""
+        # 先把"原始来源"存一份，再去改。
+        #
+        # 为什么必须在这里存：下面 _apply_alias 会把 event.unified_msg_origin
+        # 换成 master_umo，换完就再也看不出这条消息原本是从哪个门进来的。
+        # 等 on_llm_request 再读，拿到的已经是改完的值——
+        # 于是 origin_hint 永远只会说"主号来的"，那个功能等于半废。
+        try:
+            if not hasattr(event, "_sa_original_umo"):
+                event._sa_original_umo = event.unified_msg_origin
+        except Exception:
+            # 存不下也不要紧，后面有兜底
+            pass
         self._apply_alias(event)
 
     @filter.on_llm_request()
@@ -272,7 +284,7 @@ class SessionAliasPlugin(Star):
         2. 告诉模型这条消息从哪个门进来的
         """
         # 先把"原始来源"记下来——待会儿要被改掉，改完就看不出来了
-        original_umo = event.unified_msg_origin
+        original_umo = getattr(event, "_sa_original_umo", None) or event.unified_msg_origin
 
         self._apply_alias(event)
 

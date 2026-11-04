@@ -2,7 +2,7 @@
 
 > 给 AstrBot 用的小插件。作用只有一条：**换 QQ 号、换平台进来，也还是同一间屋子。**
 
-版本：v2.2.0
+版本：v2.2.1
 
 ---
 
@@ -179,7 +179,7 @@ if id_hit or umo_hit:
 | 1.0 | 只换会话号 |
 | 2.0 | 换成整条来源；加 `dry_run`、`only_private`、`platform_allow` |
 | 2.1 | 加 `origin_hint`、`origin_notes`（让模型知道消息从哪个门进来） |
-| 2.2 | 修「填 UMO 的别名永远不匹配」：改成 sender_id 和 UMO 两种都比 |
+| 2.2.1 | 修 `origin_hint` 永远报「主号」：在 `on_any_message` 里先把原始 UMO 存到 event 上，`on_llm_request` 读那一份 |
 
 ---
 
