@@ -1,5 +1,5 @@
 name: astrbot_plugin_session_alias
-display_name: 会话别名（换号不换记忆）
+display_name: 记忆库合并（换号不换记忆）
 author: zhiq2793-art
 description: >
   把指定的若干个账号（乃至不同平台），映射到同一份会话记忆上。
