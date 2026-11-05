@@ -1,4 +1,4 @@
-# 会话别名（session-alias）
+# 记忆库合并（session-alias）
 
 > 给 AstrBot 用的小插件。作用只有一条：**换 QQ 号、换平台进来，也还是同一间屋子。**
 
